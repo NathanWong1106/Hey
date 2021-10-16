@@ -4,8 +4,15 @@
   "description": "A utility to enhance the shopping experience",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-server": "node server.js",
+    "run-cam": "node camera.js",
+    "run-client": "node client.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.3.0"
+  }
 }
