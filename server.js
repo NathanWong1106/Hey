@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express(); // app setup
 const http = require('http');
-const socket = require('socket.io');
 const server = http.createServer(app);
+const socket = require('socket.io')
 const net = require('net');
 const fs = require('fs');
 
@@ -18,7 +18,11 @@ server.listen(3000, function(){
   console.log('listening on *:3000');
 });
 
-var io = socket(server) // socket setup
+var io = socket(server, {
+    cors: {
+        origin: "*"
+    }
+}); // socket setup
 
 io.on('connection', (socket) => {
     console.log('User connected');
@@ -33,4 +37,7 @@ io.on('connection', (socket) => {
         console.log('User disconnected');
     });
 });
-setInterval(() => io.emit('ping', cam_state), 5000); // broadcast map at 5 sec interval
+setInterval(() => {
+    io.emit('ping', {state: JSON.stringify(Array.from(cam_state))})
+    console.log("emitted shit")
+    }, 5000); // broadcast map at 5 sec interval
