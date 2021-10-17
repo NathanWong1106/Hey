@@ -19,8 +19,8 @@ var io = socket(server) // socket setup
 
 io.on('connection', (socket) => {
     console.log('User connected');
-    id = "Employee 1"; // payload.id;
-    state = true; // payload.state;
+    id = "Employee 1"; // payload.id from cameras
+    state = true; // payload.state from cameras
     if(id.includes("Camera")){
         socket.join("cam"); // camera room
         room = "cam"
@@ -29,14 +29,13 @@ io.on('connection', (socket) => {
         socket.join("emp"); // employee room
         room = "emp"
     }
-    socket.on("receive state", () => {
+    socket.on("receive state", () => { // payload
         cam_state.set(id, state);
     })
     console.log(cam_state);
-    socket.on("receive ping", () => {
+    socket.on("receive ping", () => { // from employees, 5-sec intervals
         socket.to("emp").emit(cam_state) // Broadcast map
-    });
-    
+    });    
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
