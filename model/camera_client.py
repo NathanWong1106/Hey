@@ -3,7 +3,7 @@ import cv2
 from detection import get_landmark_results, annotate_img, predict
 import time
 
-EMIT_FREQUENCY = 5 #how long (in seconds) before a ping is sent to server
+EMIT_FREQUENCY = 1 #how long (in seconds) before a ping is sent to server
 
 def main():
     sio = socketio.Client()

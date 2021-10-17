@@ -40,4 +40,4 @@ io.on('connection', (socket) => {
 setInterval(() => {
     io.emit('ping', {state: JSON.stringify(Array.from(cam_state))})
     console.log("emitted shit")
-    }, 5000); // broadcast map at 5 sec interval
+    }, 1000); // broadcast map at 5 sec interval
