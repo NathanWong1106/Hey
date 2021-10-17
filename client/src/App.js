@@ -14,14 +14,24 @@ function App() {
       console.log("connected")
     })
     socket.on('ping', data => {
-      console.log(new Map(JSON.parse(data.state)))
+      setCameraStates(new Map(JSON.parse(data.state)))
       setResponse(data);
     });
 
   }, []);
   return (
+
     <div className="App">
       <h1> Hello</h1>
+      {
+        [...cameraStates.keys()].map(key => {
+          return(
+            <div>
+              AHHHHHHHHH
+            </div>
+          )
+        })
+      }
       <script src="/socket.io-client/dist/socket.io.js"></script>
     </div>
 
