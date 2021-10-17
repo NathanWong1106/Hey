@@ -1,1 +1,0 @@
-const bodyPix = require("@tensorflow-models/body-pix")
