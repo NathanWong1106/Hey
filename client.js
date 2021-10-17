@@ -1,1 +1,0 @@
-//The client (employee) receives messages from the server
