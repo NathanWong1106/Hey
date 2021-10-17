@@ -19,7 +19,7 @@ def main():
     is_recording = False
 
     capture = cv2.VideoCapture(0)
-    file = open("./model/data/data.csv", "w", newline="")
+    file = open("./model/data/data.csv", "a", newline="")
 
     while True:
         success, img = capture.read()

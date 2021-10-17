@@ -38,15 +38,17 @@ def train_on_data():
 
     model = keras.Sequential(
         [
-            layers.Dense(34, activation='relu'),
+            layers.Dense(66, activation='relu'),
+            layers.Dropout(0.35),
+            layers.Dense(33, activation = 'relu'),
             layers.Dropout(0.25),
-            layers.Dense(17, activation = 'relu'),
+            layers.Dense(33),
             layers.Dense(1, activation='sigmoid')
         ]
     )
 
     model.compile(optimizer='adam', loss="binary_crossentropy", metrics=['accuracy'])
-    model.fit(features, labels, epochs=10, batch_size=32)
+    model.fit(features, labels, epochs=15, batch_size=33)
     model.save("./model/trained_model")
 
 if __name__ == "__main__":
