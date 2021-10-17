@@ -3,13 +3,15 @@ const app = express(); // app setup
 const http = require('http');
 const socket = require('socket.io');
 const server = http.createServer(app);
+const net = require('net');
+const fs = require('fs');
 
 var cam_state = new Map();
 
-// static files
+/* static files
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
-});
+});*/
 
 server.listen(3000, function(){
   console.log('listening on *:3000');
