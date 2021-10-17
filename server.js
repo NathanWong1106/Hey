@@ -28,9 +28,9 @@ io.on('connection', (socket) => {
             cam_state.set(id, state == 1 ? true : false);
             console.log(cam_state);
     })
+    console.log(cam_state);
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
 });
-
 setInterval(() => io.emit('ping', cam_state), 5000); // broadcast map at 5 sec interval
