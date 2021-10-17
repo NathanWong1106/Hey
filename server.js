@@ -22,14 +22,15 @@ var io = socket(server) // socket setup
 
 io.on('connection', (socket) => {
     console.log('User connected');
-    socket.on('cam_update', () => {
-            id = cam.id;
-            state = cam.state;
-            cam_state.set(id, state);
+    socket.on('cam_update', (data) => {
+            id = data.id;
+            state = data.state;
+            cam_state.set(id, state == 1 ? true : false);
+            console.log(cam_state);
     })
-    console.log(cam_state);
-    setInterval(() => io.emit('ping', cam_state), 5000); // broadcast map at 5 sec interval
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
 });
+
+setInterval(() => io.emit('ping', cam_state), 5000); // broadcast map at 5 sec interval

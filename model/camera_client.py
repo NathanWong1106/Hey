@@ -32,7 +32,8 @@ def main():
         cv2.imshow("Camera", img)
 
         if time.time() - last_emit > EMIT_FREQUENCY:
-            sio.emit("cam_update", {"id": 1, "state": is_raised})
+            print(is_raised)
+            sio.emit("cam_update", {"id": 1, "state": 1 if is_raised else 0})
             last_emit = time.time()
 
 if __name__ == "__main__":
